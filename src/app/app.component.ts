@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'tks-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+  <tks-task-list></tks-task-list>
+  <router-outlet></router-outlet>
+  `,
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   title = 'ng-tasks-app';
