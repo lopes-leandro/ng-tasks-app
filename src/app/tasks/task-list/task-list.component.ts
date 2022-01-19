@@ -8,8 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class TaskListComponent implements OnInit {
 
   tasks = [
-    {id: 1, title: 'Task 1', done: false},
-    {id: 2, title: 'Task 2', done: true}
+    {id: 1, title: 'Tarefa 1', done: false},
+    {id: 2, title: 'Tarefa 2', done: true}
   ];
 
   constructor() { }
@@ -17,4 +17,11 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public addTask(title: string){
+    this.tasks.push({
+      title: title, 
+      done: false,
+      id: this.tasks.length + 1
+    })
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { TaskInterface } from 'src/app/shared/models/task-interface';
 
 @Component({
   selector: 'tks-task',
@@ -13,5 +14,12 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @HostBinding('class.done')
+  public get done() {
+    return this.task && this.task.done;
+  }
+
+  
 
 }
