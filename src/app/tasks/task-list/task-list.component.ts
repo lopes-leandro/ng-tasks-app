@@ -1,27 +1,32 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { TaskInterface } from 'src/app/shared/models/task-interface';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'tks-task-list',
   templateUrl: './task-list.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class TaskListComponent implements OnInit {
+  tasks: TaskInterface[];
 
-  tasks = [
-    {id: 1, title: 'Tarefa 1', done: false},
-    {id: 2, title: 'Tarefa 2', done: true}
-  ];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private taskService: TaskService) {
+    this.tasks = taskService.getTasks();
   }
 
-  public addTask(title: string){
-    this.tasks.push({
-      title: title, 
+  ngOnInit(): void {}
+
+  public addTask(title: string) {
+    const task: TaskInterface = {
+      title,
       done: false,
-      id: this.tasks.length + 1
-    })
+    };       
+    this.taskService.addTask(task);
+    this.tasks = this.taskService.getTasks();
+  }
+
+  public updateTask(task: TaskInterface): void {
+    this.taskService.updateTask(task);
+    this.tasks = this.taskService.getTasks();
   }
 }

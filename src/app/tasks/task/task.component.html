@@ -1,2 +1,2 @@
-<tks-checkbox [checked]="task.done" (outCheck)="task.done = $event"></tks-checkbox>
+<tks-checkbox [checked]="task.done" (outCheck)="updateTask($event)"></tks-checkbox>
 <div>{{ task.title }}</div>

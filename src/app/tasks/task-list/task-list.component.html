@@ -1,2 +1,2 @@
 <tks-enter-task (outEnterTask)="addTask($event)"></tks-enter-task>
-<tks-task *ngFor="let task of tasks" [task]="task"></tks-task>
+<tks-task *ngFor="let task of tasks" [task]="task" (outUpdateTask)="updateTask($event)"></tks-task>
