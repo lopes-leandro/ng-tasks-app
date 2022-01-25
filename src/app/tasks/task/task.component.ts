@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { TaskInterface } from 'src/app/shared/models/task-interface';
+import { Task} from 'src/app/shared/models/task.interface';
 
 @Component({
   selector: 'tks-task',
@@ -9,7 +9,7 @@ import { TaskInterface } from 'src/app/shared/models/task-interface';
 export class TaskComponent implements OnInit {
 
   @Input('task') task: any;
-  @Output() outUpdateTask = new EventEmitter<TaskInterface>();
+  @Output() outUpdateTask = new EventEmitter<Task>();
 
   constructor() { }
 

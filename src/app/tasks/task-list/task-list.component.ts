@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TaskInterface, TaskListFilterType } from 'src/app/shared/models/task-interface';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Task, TaskListFilterType } from 'src/app/shared/models/task.interface';
 import { TaskService } from '../task.service';
 
 @Component({
@@ -8,48 +10,46 @@ import { TaskService } from '../task.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class TaskListComponent implements OnInit {
-  tasks: TaskInterface[];
-  filteredTasks: TaskInterface[] = [];
+  tasks: Observable<Task[]>;
+  filteredTasks: Observable<Task[]>;
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
-  activeTaskFilterType: TaskListFilterType = 'all';
+  activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
   constructor(private taskService: TaskService) {
     this.tasks = taskService.getTasks();
-    this.filterTasks();
+    this.filteredTasks = combineLatest([
+      this.tasks,
+      this.activeTaskFilterType,
+    ]).pipe(
+      map(([tasks, activeTaskFilterType]) => {
+        return tasks.filter((task: Task) => {
+          if (activeTaskFilterType === 'all') {
+            return true;
+          } else if (activeTaskFilterType === 'open') {
+            return !task.done;
+          } else {
+            return task.done;
+          }
+        });
+      })
+    );
   }
 
   ngOnInit(): void {}
 
   public activateFilterType(type: string) {
-    this.activeTaskFilterType = type as TaskListFilterType;
-    this.filterTasks();
-  }
-
-  public filterTasks() {
-    this.filteredTasks = this.tasks.filter((task: TaskInterface) => {
-      if (this.activeTaskFilterType === 'all') {
-        return true;
-      } else if (this.activeTaskFilterType === 'open') {
-        return !task.done;
-      } else {
-        return task.done;
-      }
-    });
+    this.activeTaskFilterType.next(type as TaskListFilterType);
   }
 
   public addTask(title: string) {
-    const task: TaskInterface = {
+    const task: Task = {
       title,
       done: false,
-    };       
+    };
     this.taskService.addTask(task);
-    this.tasks = this.taskService.getTasks();
-    this.filterTasks();
   }
 
-  public updateTask(task: TaskInterface): void {
+  public updateTask(task: Task): void {
     this.taskService.updateTask(task);
-    this.tasks = this.taskService.getTasks();
-    this.filterTasks();
   }
 }

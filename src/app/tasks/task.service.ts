@@ -1,33 +1,37 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TaskInterface } from '../shared/models/task-interface';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BaseService, Task } from '../shared/models/task.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TaskService {
+export class TaskService implements BaseService {
+  tasks = new BehaviorSubject<Task[]>([]);
 
-  private tasks: TaskInterface[] = [
-    {id: 1, title: 'Tarefa 1', done: false},
-    {id: 2, title: 'Tarefa 2', done: true},
-    {id: 3, title: 'Tarefa 3', done: false},
-    {id: 4, title: 'Tarefa 4', done: true},
-  ]
-
-  constructor() { }
-
-  public getTasks(): TaskInterface[] {
-    return this.tasks.slice();
+  constructor(private http: HttpClient) {
+    this.loadTasks();
   }
 
-  public addTask(task: TaskInterface): void {
-    this.tasks.push({
-      ...task,
-      id: this.tasks.length + 1
-    });
+  private loadTasks() {
+    this.http
+      .get<Task[]>('/api/tasks')
+      .subscribe((tasks) => this.tasks.next(tasks));
   }
 
-  public updateTask(task: TaskInterface): void {
-    const index = this.tasks.findIndex((t) => t.id === task.id);
-    this.tasks[index] = task
+  public getTasks(): Observable<Task[]> {
+    return this.tasks.asObservable();
+  }
+
+  public addTask(task: Task): Subscription {
+    return this.http
+      .post<Task>('/api/tasks', task)
+      .subscribe(() => this.loadTasks());
+  }
+
+  public updateTask(task: Task): Subscription {
+    return this.http
+      .post(`/api/tasks/${task.id}`, task)
+      .subscribe(() => this.loadTasks());
   }
 }
