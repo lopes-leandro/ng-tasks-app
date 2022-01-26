@@ -12,6 +12,7 @@ import { CheckboxComponent } from './shared/ui/checkbox/checkbox/checkbox.compon
 import { ToggleComponent } from './shared/ui/toggle/toggle.component';
 import { Database } from "./database/database";
 import { TaskListContainerComponent } from './container/task-list-container/task-list-container.component';
+import { ProjectService } from './project/project.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { TaskListContainerComponent } from './container/task-list-container/task
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0}),
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
