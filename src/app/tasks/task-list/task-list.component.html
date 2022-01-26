@@ -1,10 +1,10 @@
 <tks-toggle 
   [buttonList]="taskFilterTypes"
-  [activeButton]="activeTaskFilterType | async"
+  [activeButton]="activeTaskFilterType"
   (outActivate)="activateFilterType($event)"></tks-toggle>
 <tks-enter-task (outEnterTask)="addTask($event)"></tks-enter-task>
 <tks-task
-  *ngFor="let task of filteredTasks | async"
+  *ngFor="let task of tasks"
   [task]="task"
   (outUpdateTask)="updateTask($event)"
 ></tks-task>

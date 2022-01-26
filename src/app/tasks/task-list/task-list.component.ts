@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Task, TaskListFilterType } from 'src/app/shared/models/task.interface';
@@ -8,48 +15,27 @@ import { TaskService } from '../task.service';
   selector: 'tks-task-list',
   templateUrl: './task-list.component.html',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskListComponent implements OnInit {
-  tasks: Observable<Task[]>;
-  filteredTasks: Observable<Task[]>;
-  taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
-  activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
+export class TaskListComponent {
+  @Input() tasks: Task[] | null = [];
+  @Input() taskFilterTypes: TaskListFilterType[] = [];
+  @Input() activeTaskFilterType: TaskListFilterType | null = 'all';
+  @Output() outAddTask = new EventEmitter<string>();
+  @Output() outActivateFilterType = new EventEmitter<TaskListFilterType>();
+  @Output() outUpdateTask = new EventEmitter<Task>();
 
-  constructor(private taskService: TaskService) {
-    this.tasks = taskService.getTasks();
-    this.filteredTasks = combineLatest([
-      this.tasks,
-      this.activeTaskFilterType,
-    ]).pipe(
-      map(([tasks, activeTaskFilterType]) => {
-        return tasks.filter((task: Task) => {
-          if (activeTaskFilterType === 'all') {
-            return true;
-          } else if (activeTaskFilterType === 'open') {
-            return !task.done;
-          } else {
-            return task.done;
-          }
-        });
-      })
-    );
-  }
-
-  ngOnInit(): void {}
+  constructor() {}
 
   public activateFilterType(type: string) {
-    this.activeTaskFilterType.next(type as TaskListFilterType);
+    this.outActivateFilterType.emit(type as TaskListFilterType);
   }
 
   public addTask(title: string) {
-    const task: Task = {
-      title,
-      done: false,
-    };
-    this.taskService.addTask(task);
+    this.outAddTask.emit(title);    
   }
 
   public updateTask(task: Task): void {
-    this.taskService.updateTask(task);
+    this.outUpdateTask.emit(task);
   }
 }
