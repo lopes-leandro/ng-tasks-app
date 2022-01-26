@@ -11,6 +11,7 @@ import { EnterTaskComponent } from './tasks/enter-task/enter-task.component';
 import { CheckboxComponent } from './shared/ui/checkbox/checkbox/checkbox.component';
 import { ToggleComponent } from './shared/ui/toggle/toggle.component';
 import { Database } from "./database/database";
+import { TaskListContainerComponent } from './container/task-list-container/task-list-container.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { Database } from "./database/database";
     TaskComponent,
     EnterTaskComponent,
     CheckboxComponent,
-    ToggleComponent
+    ToggleComponent,
+    TaskListContainerComponent
   ],
   imports: [
     BrowserModule,

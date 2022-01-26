@@ -1,0 +1,8 @@
+<tks-task-list
+    [tasks]="filteredTasks | async"
+    [taskFilterTypes]="taskFilterTypes"
+    [activeTaskFilterType]="activeTaskFilterType | async"
+    (outUpdateTask)="updateTask($event)"
+    (outAddTask)="addTask($event)"
+    (outActivateFilterType)="activateFilterType($event)"
+></tks-task-list>
