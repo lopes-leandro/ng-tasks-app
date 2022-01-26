@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
 export class ToggleComponent implements OnInit {
 
   @Input() buttonList: string[] = [];
-  @Input() activeButton: string = '';
+  @Input() activeButton: string | null = "";
   @Output() outActivate = new EventEmitter<string>();
 
   constructor() { }
