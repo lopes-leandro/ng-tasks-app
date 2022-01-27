@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
+import { ProjectService } from 'src/app/project/project.service';
+import { Project } from 'src/app/shared/models/project.interface';
 import { Task, TaskListFilterType } from 'src/app/shared/models/task.interface';
 import { TaskService } from 'src/app/tasks/task.service';
 
@@ -19,9 +21,18 @@ export class TaskListContainerComponent {
   filteredTasks: Observable<Task[]>;
   taskFilterTypes: TaskListFilterType[] = ['all', 'done', 'open'];
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
+  selectedProject: Observable<Project | undefined>;
 
-  constructor(private taskService: TaskService) {
-    this.tasks = this.taskService.getTasks();
+  constructor(
+    private taskService: TaskService,
+    private projectService: ProjectService
+  ) {
+    this.selectedProject = this.projectService.getSelectedProject();
+
+    this.tasks = this.selectedProject.pipe(
+      switchMap((project) => this.taskService.getProjectTasks(project?.id))
+    )
+    
     this.filteredTasks = combineLatest([
       this.tasks,
       this.activeTaskFilterType,
@@ -45,11 +56,17 @@ export class TaskListContainerComponent {
   }
 
   addTask(title: string): void {
-    const task: Task = {
-      title,
-      done: false
-    };
-    this.taskService.addTask(task);
+    this.selectedProject
+      .pipe(
+        take(1)
+      ).subscribe((project) => {
+        const task: Task = {
+          projectId: project?.id,
+          title,
+          done: false
+        };
+        this.taskService.addTask(task);
+      });
   }
 
   updateTask(task: Task): void {

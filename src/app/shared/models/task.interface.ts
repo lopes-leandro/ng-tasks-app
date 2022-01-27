@@ -2,6 +2,7 @@ import { BehaviorSubject } from "rxjs";
 
 export interface Task {
     readonly id?: number;
+    readonly projectId?: number;
     readonly title: string;
     readonly done: boolean;
 }

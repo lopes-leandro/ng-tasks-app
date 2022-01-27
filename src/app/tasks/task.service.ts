@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { BaseService, Task } from '../shared/models/task.interface';
 
 @Injectable({
@@ -11,6 +12,13 @@ export class TaskService implements BaseService {
 
   constructor(private http: HttpClient) {
     this.loadTasks();
+  }
+
+  public getProjectTasks(projectId: number | undefined): Observable<Task[]> {
+    return this.tasks.asObservable()
+      .pipe(
+        map((tasks) => tasks.filter((task) => task.projectId === projectId))
+      );
   }
 
   private loadTasks() {
