@@ -9,14 +9,9 @@ import { Project } from 'src/app/shared/models/project.interface';
 })
 export class ProjectComponent implements OnInit {
 
-  @Input() project: Project;
+  @Input() project: Project | null | undefined;
 
-  constructor() { 
-    this.project = {
-      title: '',
-      description: ''
-    }
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
