@@ -14,7 +14,7 @@ export class TaskService implements BaseService {
     this.loadTasks();
   }
 
-  public getProjectTasks(projectId: number): Observable<Task[]> {
+  public getProjectTasks(projectId: number | undefined): Observable<Task[]> {
     return this.tasks.asObservable()
       .pipe(
         map((tasks) => tasks.filter((task) => task.projectId === projectId))

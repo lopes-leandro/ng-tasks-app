@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'tks-root',
   template: `
-    <tks-task-list-container></tks-task-list-container>
+    <tks-project></tks-project>
     <router-outlet></router-outlet>
   `,
   encapsulation: ViewEncapsulation.None,
