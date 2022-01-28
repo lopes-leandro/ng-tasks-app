@@ -7,22 +7,23 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Project } from 'src/app/shared/models/project.interface';
 import { Tab } from 'src/app/shared/models/tab.interface';
 
 @Component({
-  selector: 'tks-project',
-  templateUrl: './project.component.html',
+  selector: 'tks-tabs',
+  templateUrl: './tabs.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectComponent implements OnInit {
-  @Input() project: Project | null | undefined;
+export class TabsComponent implements OnInit {
   @Input() tabs: Tab[] | null | undefined;
   @Input() activeTab: Tab | null | undefined;
   @Output() outActivateTab = new EventEmitter<Tab>();
 
-  constructor() {}
+  constructor() {
+    this.tabs = [];
+    this.activeTab = { id: '', title: '' };
+  }
 
   ngOnInit(): void {}
 

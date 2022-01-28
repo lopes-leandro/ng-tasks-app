@@ -1,4 +1,4 @@
 export interface Tab {
-    readonly id: number;
+    readonly id: string;
     readonly title: string;
 }
