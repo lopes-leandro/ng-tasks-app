@@ -2,4 +2,8 @@
     <h2>{{project?.title}}</h2>
     {{project?.description}}
 </header>
+<tks-tabs 
+    [tabs]="tabs"
+    [activeTab]="activeTab"
+    (outActivateTab)="activateTab($event)"></tks-tabs>
 <tks-task-list-container></tks-task-list-container>
