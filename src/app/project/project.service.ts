@@ -34,4 +34,8 @@ export class ProjectService {
   public getSelectedProject(): Observable<Project | undefined> {
     return this.selectedProject;
   }
+
+  getProjects(): Observable<Project[]> {
+    return this.projects.asObservable()
+  }
 }
