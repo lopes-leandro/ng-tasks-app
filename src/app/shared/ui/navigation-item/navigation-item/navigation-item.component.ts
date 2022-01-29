@@ -9,8 +9,8 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, O
 export class NavigationItemComponent implements OnInit {
 
   @Input() title: string = '';
-  @Input() navId: string = '';
-  @Output() outActivateNavigationItem = new EventEmitter<string>();
+  @Input() navId: number | undefined = 0;
+  @Output() outActivateNavigationItem = new EventEmitter<number>();
 
   constructor() { }
 

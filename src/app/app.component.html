@@ -1,4 +1,14 @@
-<aside class="side-nav"></aside>
+<aside class="side-nav">
+    <tks-navigation>
+        <tks-navigation-section title="Projetos">
+            <tks-navigation-item *ngFor="let project of projects | async"
+                [navId]="project.id"
+                [title]="project.title"
+                [class.navigation-section__item--active]="project.id === (selectedProject | async)?.id"
+                (outActivateNavigationItem)="selectProject($event)"></tks-navigation-item>
+        </tks-navigation-section>
+    </tks-navigation>
+</aside>
 <main>
     <tks-project-container></tks-project-container>
 </main>
