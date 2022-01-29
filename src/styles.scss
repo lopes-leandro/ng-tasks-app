@@ -1,6 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* side-nav */
+.side-nav {
+    display: block;
+    max-width: 300px;
+}
+.side-nav .navigation-section__item {
+    display: flex;
+    flex-direction: column;
+}
 
+.side-nav .navigation-section__item tks-navigation-item {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 0.8rem;    
+    cursor: pointer;
+    border-left: 0.3rem solid transparent;
+    font-weight: 700;
+    background-color: rgba(24, 23, 23, 0.9);
+    color: white;
+
+}
+
+.navigation-section__item--active {
+    border-left: 0.3rem solid orangered!important;
+    color: orangered!important;
+}
+
+.active {
+    border-bottom: 3px solid orangered;
+}
 
 .tab-container {
     display: flex;

@@ -16,6 +16,9 @@ import { ProjectService } from './project/project.service';
 import { ProjectComponent } from './project/project/project.component';
 import { ProjectContainerComponent } from './container/project-container/project-container.component';
 import { TabsComponent } from './shared/ui/tabs/tabs/tabs.component';
+import { NavigationItemComponent } from './shared/ui/navigation-item/navigation-item/navigation-item.component';
+import { NavigationSectionComponent } from './shared/ui/navigation-section/navigation-section/navigation-section.component';
+import { NavigationComponent } from './shared/ui/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { TabsComponent } from './shared/ui/tabs/tabs/tabs.component';
     TaskListContainerComponent,
     ProjectComponent,
     ProjectContainerComponent,
-    TabsComponent
+    TabsComponent,
+    NavigationItemComponent,
+    NavigationSectionComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
