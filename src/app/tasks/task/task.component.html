@@ -1,2 +1,11 @@
-<tks-checkbox [checked]="task.done" (outCheck)="updateTask($event)"></tks-checkbox>
-<div>{{ task.title }}</div>
+<tks-checkbox
+  [checked]="task.done"
+  (outCheck)="updateTask($event)"
+></tks-checkbox>
+<div>
+  <tks-editor
+    [content]="task.title"
+    [showControls]="true"
+    (outSaveEdit)="updateTilte($event)"
+  ></tks-editor>
+</div>

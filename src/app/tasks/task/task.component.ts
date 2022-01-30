@@ -28,6 +28,11 @@ export class TaskComponent implements OnInit {
     return this.task && this.task.done;
   }
 
-  
+  public updateTilte(title: string): void{
+    this.outUpdateTask.emit({
+      ...this.task,
+      title
+    });
+  }
 
 }
