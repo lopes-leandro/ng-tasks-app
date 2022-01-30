@@ -1,9 +1,20 @@
 <header>
-    <h2>{{project?.title}}</h2>
-    {{project?.description}}
+  <h2>
+    <tks-editor
+      [content]="project?.title"
+      [showControls]="true"
+      (outSaveEdit)="updateTitle($event)"
+    ></tks-editor>
+  </h2>
+  <tks-editor
+    [content]="project?.description"
+    [showControls]="true"
+    (outSaveEdit)="updateDescription($event)"
+  ></tks-editor>
 </header>
-<tks-tabs 
-    [tabs]="tabs"
-    [activeTab]="activeTab"
-    (outActivateTab)="activateTab($event)"></tks-tabs>
+<tks-tabs
+  [tabs]="tabs"
+  [activeTab]="activeTab"
+  (outActivateTab)="activateTab($event)"
+></tks-tabs>
 <tks-task-list-container></tks-task-list-container>

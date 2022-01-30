@@ -21,7 +21,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditorComponent implements OnChanges, AfterViewInit {
-  @Input() content: string = '';
+  @Input() content!: string | undefined;
   @Input() showControls: boolean = false;
   @Output() outSaveEdit = new EventEmitter<string>();
   @Output() outCancelEdit = new EventEmitter<never>();
@@ -67,7 +67,7 @@ export class EditorComponent implements OnChanges, AfterViewInit {
     return this.editableContentElement.nativeElement.textContent;
   }
 
-  private setEditableContent(content: string) {
+  private setEditableContent(content: string | undefined) {
     this.editableContentElement.nativeElement.textContent = (content || "-");
   }
 }
