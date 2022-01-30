@@ -20,6 +20,7 @@ import { NavigationItemComponent } from './shared/ui/navigation-item/navigation-
 import { NavigationSectionComponent } from './shared/ui/navigation-section/navigation-section/navigation-section.component';
 import { NavigationComponent } from './shared/ui/navigation/navigation.component';
 import { EditorComponent } from './shared/ui/editor/editor.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { EditorComponent } from './shared/ui/editor/editor.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0}),
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

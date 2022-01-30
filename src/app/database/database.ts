@@ -29,6 +29,6 @@ export class Database implements InMemoryDbService {
       { id: 4, projectId: 2, title: 'Tarefa 4', done: true },
     ];
 
-    return { tasks, projects };
+    return { tasks, projects, users };
   }
 }
