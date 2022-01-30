@@ -38,4 +38,9 @@ export class ProjectService {
   getProjects(): Observable<Project[]> {
     return this.projects.asObservable()
   }
+
+  public updateProject(project: Project) {
+    this.http.post(`/api/projects/${project.id}`, project)
+      .subscribe(() => this.loadProjects());
+  }
 }

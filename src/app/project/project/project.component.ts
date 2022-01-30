@@ -18,9 +18,10 @@ import { Tab } from 'src/app/shared/models/tab.interface';
 })
 export class ProjectComponent implements OnInit {
   @Input() project: Project | null | undefined;
-  @Input() tabs: Tab[] | null | undefined;
-  @Input() activeTab: Tab | null | undefined;
+  @Input() tabs!: Tab[];
+  @Input() activeTab!: Tab;
   @Output() outActivateTab = new EventEmitter<Tab>();
+  @Output() outUpdateProject = new EventEmitter<Project>();
 
   constructor() {}
 
@@ -28,5 +29,13 @@ export class ProjectComponent implements OnInit {
 
   public activateTab(tab: Tab) {
     this.outActivateTab.emit(tab);
+  }
+
+  public updateTitle(title: string): void {
+    this.outUpdateProject.emit({ ...this.project, title } as Project);
+  }
+
+  public updateDescription(description: string): void {
+    this.outUpdateProject.emit({ ...this.project, description } as Project);
   }
 }

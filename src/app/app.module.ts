@@ -19,6 +19,7 @@ import { TabsComponent } from './shared/ui/tabs/tabs/tabs.component';
 import { NavigationItemComponent } from './shared/ui/navigation-item/navigation-item/navigation-item.component';
 import { NavigationSectionComponent } from './shared/ui/navigation-section/navigation-section/navigation-section.component';
 import { NavigationComponent } from './shared/ui/navigation/navigation.component';
+import { EditorComponent } from './shared/ui/editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NavigationComponent } from './shared/ui/navigation/navigation.component
     TabsComponent,
     NavigationItemComponent,
     NavigationSectionComponent,
-    NavigationComponent
+    NavigationComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
