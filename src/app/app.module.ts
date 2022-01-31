@@ -22,6 +22,7 @@ import { NavigationComponent } from './shared/ui/navigation/navigation.component
 import { EditorComponent } from './shared/ui/editor/editor.component';
 import { UserService } from './user/user.service';
 import { ProfilePictureComponent } from './user/profile-picture/profile-picture.component';
+import { UserAreaComponent } from './user/user-area/user-area.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ProfilePictureComponent } from './user/profile-picture/profile-picture.
     NavigationSectionComponent,
     NavigationComponent,
     EditorComponent,
-    ProfilePictureComponent
+    ProfilePictureComponent,
+    UserAreaComponent
   ],
   imports: [
     BrowserModule,
