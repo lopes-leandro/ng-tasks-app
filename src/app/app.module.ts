@@ -20,6 +20,9 @@ import { NavigationItemComponent } from './shared/ui/navigation-item/navigation-
 import { NavigationSectionComponent } from './shared/ui/navigation-section/navigation-section/navigation-section.component';
 import { NavigationComponent } from './shared/ui/navigation/navigation.component';
 import { EditorComponent } from './shared/ui/editor/editor.component';
+import { UserService } from './user/user.service';
+import { ProfilePictureComponent } from './user/profile-picture/profile-picture.component';
+import { UserAreaComponent } from './user/user-area/user-area.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { EditorComponent } from './shared/ui/editor/editor.component';
     NavigationItemComponent,
     NavigationSectionComponent,
     NavigationComponent,
-    EditorComponent
+    EditorComponent,
+    ProfilePictureComponent,
+    UserAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,7 @@ import { EditorComponent } from './shared/ui/editor/editor.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0}),
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
