@@ -9,8 +9,8 @@ import { User } from 'src/app/shared/models/user.interface';
 })
 export class UserAreaComponent {
 
-  @Input() user!: User;
-  @Input() openTasksCount!: number;
+  @Input() user!: User | null | undefined;
+  @Input() openTasksCount: number | null = 0;
   
   constructor() { }
 

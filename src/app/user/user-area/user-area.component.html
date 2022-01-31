@@ -2,7 +2,7 @@
     <tks-profile-picture [user]="user"></tks-profile-picture>
 </div>
 <div class="information">
-    <p class="welcome-text">Olá {{user.name}}!</p>
+    <p class="welcome-text">Olá {{user?.name}}!</p>
     <p *ngIf="openTasksCount !== 0">Você tem <strong>{{openTasksCount}}</strong> tarefas aberta.</p>
     <p *ngIf="openTasksCount === 0">Sem tarefas abertas. Viva!</p>
 </div>
