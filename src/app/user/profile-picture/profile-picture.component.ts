@@ -17,7 +17,7 @@ import { User } from 'src/app/shared/models/user.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfilePictureComponent implements OnChanges {
-  @Input() user!: User;
+  @Input() user!: User | undefined | null;
   pictureSafeUrl!: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -25,7 +25,7 @@ export class ProfilePictureComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.user) {
       this.pictureSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        this.user.pictureUrl
+        this.user!.pictureUrl
       );
     }
   }

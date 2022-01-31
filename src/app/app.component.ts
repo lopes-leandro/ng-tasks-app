@@ -17,7 +17,7 @@ export class AppComponent {
   projects: Observable<Project[]>;
   selectedProject: Observable<Project | undefined>;
   openTasksCount!: Observable<number>;
-  user!: Observable<User>
+  user!: Observable<User | null>
 
   constructor(
     private projectService: ProjectService,

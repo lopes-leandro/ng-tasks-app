@@ -1,5 +1,7 @@
 <aside class="side-nav">
-  
+  <tks-user-area
+    [user]="user | async"
+    [openTasksCount]="openTasksCount | async"></tks-user-area>
   <tks-navigation>
     <tks-navigation-section title="Projetos">
       <tks-navigation-item
