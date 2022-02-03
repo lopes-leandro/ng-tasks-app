@@ -14,11 +14,13 @@ export class Database implements InMemoryDbService {
         id: 1,
         title: 'Meu primeiro projeto',
         description: 'Este é seu primeiro projeto.',
+        comments: [],
       },
       {
         id: 2,
         title: 'Meu segundo projeto',
         description: 'Este é seu segundo projeto.',
+        comments: [],
       },
     ];
 
