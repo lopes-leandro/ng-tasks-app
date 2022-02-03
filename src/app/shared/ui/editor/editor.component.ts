@@ -44,7 +44,6 @@ export class EditorComponent implements OnChanges, AfterViewInit {
   public focusEditableContent(): void {
     if (this.editMode) {
       this.editableContentElement.nativeElement.focus();    
-      this.editableContentElement.nativeElement.select();    
     }
   }
 
