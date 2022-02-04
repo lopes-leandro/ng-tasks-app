@@ -23,6 +23,7 @@ import { EditorComponent } from './shared/ui/editor/editor.component';
 import { UserService } from './user/user.service';
 import { ProfilePictureComponent } from './user/profile-picture/profile-picture.component';
 import { UserAreaComponent } from './user/user-area/user-area.component';
+import { FromNowPipe } from './pipes/from-now.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { UserAreaComponent } from './user/user-area/user-area.component';
     NavigationComponent,
     EditorComponent,
     ProfilePictureComponent,
-    UserAreaComponent
+    UserAreaComponent,
+    FromNowPipe
   ],
   imports: [
     BrowserModule,
