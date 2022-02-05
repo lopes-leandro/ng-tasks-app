@@ -25,6 +25,7 @@ import { ProfilePictureComponent } from './user/profile-picture/profile-picture.
 import { UserAreaComponent } from './user/user-area/user-area.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { CommentComponent } from './comments/comment/comment.component';
+import { CommentsComponent } from './comments/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CommentComponent } from './comments/comment/comment.component';
     ProfilePictureComponent,
     UserAreaComponent,
     FromNowPipe,
-    CommentComponent
+    CommentComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
