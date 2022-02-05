@@ -23,6 +23,10 @@ import { EditorComponent } from './shared/ui/editor/editor.component';
 import { UserService } from './user/user.service';
 import { ProfilePictureComponent } from './user/profile-picture/profile-picture.component';
 import { UserAreaComponent } from './user/user-area/user-area.component';
+import { FromNowPipe } from './pipes/from-now.pipe';
+import { CommentComponent } from './comments/comment/comment.component';
+import { CommentsComponent } from './comments/comments/comments.component';
+import { ProjectCommentsContainerComponent } from './container/project-comments-container/project-comments-container.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { UserAreaComponent } from './user/user-area/user-area.component';
     NavigationComponent,
     EditorComponent,
     ProfilePictureComponent,
-    UserAreaComponent
+    UserAreaComponent,
+    FromNowPipe,
+    CommentComponent,
+    CommentsComponent,
+    ProjectCommentsContainerComponent
   ],
   imports: [
     BrowserModule,

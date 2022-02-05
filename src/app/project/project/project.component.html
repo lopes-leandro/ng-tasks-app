@@ -17,4 +17,5 @@
   [activeTab]="activeTab"
   (outActivateTab)="activateTab($event)"
 ></tks-tabs>
-<tks-task-list-container></tks-task-list-container>
+<tks-task-list-container *ngIf="activeTab.id === 'tasks'"></tks-task-list-container>
+<tks-project-comments-container *ngIf="activeTab.id === 'comments'"></tks-project-comments-container>
