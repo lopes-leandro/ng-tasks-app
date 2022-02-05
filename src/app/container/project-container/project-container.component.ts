@@ -29,7 +29,7 @@ export class ProjectContainerComponent implements OnInit {
   }
 
   public activateTab(tab: Tab): void {
-    this.activeTab = tab;
+    this.activeTab = tab;  
   }
 
   updateProject(project: Project): void {

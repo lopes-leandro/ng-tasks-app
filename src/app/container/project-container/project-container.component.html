@@ -1,6 +1,11 @@
-<tks-project [project]="selectedProject | async"
-    [tabs]="tabs"
-    [activeTab]="activeTab"
-    (outActivateTab)="activateTab($event)"
-    (outUpdateProject)="updateProject($event)">
-</tks-project>
+<ng-container *ngIf="(selectedProject | async) as project; else loading">
+    <tks-project [project]="project"
+        [tabs]="tabs"
+        [activeTab]="activeTab"
+        (outActivateTab)="activateTab($event)"
+        (outUpdateProject)="updateProject($event)">
+    </tks-project>
+</ng-container>
+<ng-template #loading>
+    Carregando....
+</ng-template>

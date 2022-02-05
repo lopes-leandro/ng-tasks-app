@@ -28,21 +28,23 @@ export class CommentsComponent {
   @Output() outCreateComment = new EventEmitter<Comment>();
   @ViewChild('commentContentEditable') commentContentEditable!: ElementRef;
 
-  constructor() {}
+  constructor() {
+  }
 
   public createComment(): void {
     this.outCreateComment.emit({
       user: this.user,
       time: +new Date(),
       content: this.commentContentEditable.nativeElement.textContent
-    });
+    });    
     this.commentContentEditable.nativeElement.textContent = '';
   }
 
   public updateComment(index: number, comment: Comment): void {
-    this.outUpdateComment.next({
+    this.outUpdateComment.emit({
       index,
       comment
     });
   }
+
 }

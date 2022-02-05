@@ -26,6 +26,7 @@ import { UserAreaComponent } from './user/user-area/user-area.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { CommentComponent } from './comments/comment/comment.component';
 import { CommentsComponent } from './comments/comments/comments.component';
+import { ProjectCommentsContainerComponent } from './container/project-comments-container/project-comments-container.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CommentsComponent } from './comments/comments/comments.component';
     UserAreaComponent,
     FromNowPipe,
     CommentComponent,
-    CommentsComponent
+    CommentsComponent,
+    ProjectCommentsContainerComponent
   ],
   imports: [
     BrowserModule,

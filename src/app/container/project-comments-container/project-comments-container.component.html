@@ -1,0 +1,12 @@
+<ng-container *ngIf="(user | async) as user; else loading">
+  <div *ngIf="(projectComments | async) as comments; else loading">
+    <tks-comments
+      [user]="user"
+      [comments]="comments"
+      (outCreateComment)="createComment($event)"
+      (outUpdateComment)="updateComment($event)"
+    >
+    </tks-comments>
+  </div>
+</ng-container>
+<ng-template #loading>Carregando....</ng-template>

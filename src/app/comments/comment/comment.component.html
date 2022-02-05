@@ -9,7 +9,7 @@
   <div class="content">
     <tks-editor
       [content]="comment.content"
-      [showControls]="comment.user.id === user.id"
+      [showControls]="comment.user.id === user?.id"
       (outSaveEdit)="updateComment($event)"
     ></tks-editor>
   </div>
